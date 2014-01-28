@@ -24,9 +24,11 @@ package
 				if (target.dx < 0) target.dx = 0;
 				target.dx += acc;
 			}
-			
 			target.dx /= slow;
 			target.dy += grav;
+			
+			x += dx;
+			y += dy;
 		}
 		
 		public function act():void {
