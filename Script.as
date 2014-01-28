@@ -2,6 +2,7 @@ package
 {
 	public class Script
 	{
+		// target could be typeless to allow scripts checking scripts
 		public var target:Gentity;
 		public var type:String;
 		

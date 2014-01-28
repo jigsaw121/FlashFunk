@@ -36,9 +36,10 @@ package
 			(graphic as Graphiclist).add(img);
 		}
 		
-		public function add_script(sc:Script):void {
+		public function add_script(sc:Script):Script {
 			scripts.push(sc);
 			sc.set_target(this);
+			return sc;
 		}
 		
 		public function remove_script(sc:Script):void {

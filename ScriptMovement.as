@@ -12,6 +12,7 @@ package
 		public var grav:Number = 0.2;
 		
 		public function ScriptMovement() {
+			super();
 		}
 		
 		override public function init():void {

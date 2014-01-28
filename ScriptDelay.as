@@ -1,30 +1,18 @@
 package 
 {
-	public class ScriptDelay extends Script
+	public class ScriptDelay extends ScriptTrigger
 	{
-		public var delay:int;
-		public var callback:Function;
-		
-		public function ScriptDelay(_delay:int, _callback:Function) {
-			delay = _delay; callback = _callback;
+		public function ScriptDelay(delay:int, _callback:Function) {
+			super(function():Boolean { 
+				delay--; 
+				return delay <= -1;
+			}, _callback);
 		}
 		
 		override public function init():void {
 			type = "delay";
 		}
 		
-		private function decay():void {
-			if (delay <= 0) {
-				callback();
-				target.remove_script(this);
-				return;
-			}
-			delay--;
-		}
-		
-		override public function act():void {
-			decay();
-		}
 	}
 	
 }
