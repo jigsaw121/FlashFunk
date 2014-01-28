@@ -8,7 +8,7 @@ package
 		public function Main() {
 			super(320, 200, 60, true);
 
-			FP.screen.color = 0x808080;
+			FP.screen.color = 0x908090;
 			FP.screen.scale = 2;
 			FP.volume = 0.4;
 			
