@@ -10,6 +10,7 @@ package
 			reset();
 		}
 		public function reset():void {
+			removeAll();
 			track = new Tracker(this);
 			add(track);
 		}
