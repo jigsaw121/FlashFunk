@@ -19,11 +19,11 @@ package
 		}
 		
 		private function move():void {
-			if (Input.pressed(Key.LEFT)) {
+			if (Input.check(Key.LEFT)) {
 				if (target.dx > 0) target.dx = 0;
 				target.dx -= acc;
 			}
-			if (Input.pressed(Key.RIGHT)) {
+			if (Input.check(Key.RIGHT)) {
 				if (target.dx < 0) target.dx = 0;
 				target.dx += acc;
 			}

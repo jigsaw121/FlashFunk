@@ -1,6 +1,8 @@
 package 
 {
 	import net.flashpunk.Entity;
+	import net.flashpunk.utils.Input;
+	import net.flashpunk.utils.Key;
 
 	public class Tracker extends Gentity
 	{
@@ -18,6 +20,10 @@ package
 		}
 		
 		override public function update():void {
+			if (Input.pressed(Key.R)) {
+				host.reset();
+				return;
+			}
 			frame++;
 		}
 	}
