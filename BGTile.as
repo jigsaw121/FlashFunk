@@ -8,7 +8,7 @@ package
 			super(_host, _x, _y);
 			layer = 1;
 			
-			add_script(new ScriptDelay(1, function():void {
+			add_script(new ScriptDelay(0, function():void {
 				_x += 24; 
 				if (_x >= host.track.scr_w) { _x = 0; _y += 24; }
 				if (_y >= host.track.scr_h) return;
@@ -26,11 +26,12 @@ package
 			}));
 		}
 		
+		override public function sizeinit():void {
+			width = 17; height = 17;
+		}
+		
 		override public function imginit():void {
-			img = Image.createRect(17, 17, 0x9090B0);
-			img.centerOO();
-			//img.angle = 45;			
-			addGraphic(img);
+			add_rectimg(width, height, 0x9090B0);
 		}
 	}
 	

@@ -30,9 +30,6 @@ package
 			}
 			target.dx /= slow;
 			target.dy += grav;
-			
-			target.x += target.dx;
-			target.y += target.dy;
 		}
 		
 		override public function act():void {

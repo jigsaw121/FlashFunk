@@ -18,10 +18,14 @@ package
 			init();
 		}
 		
+		public function sizeinit():void {
+			width = host.track.size; height = host.track.size;
+		}
+		
 		public function init():void {
 			// add scripts here
-			width = host.track.size; height = host.track.size;
 			typeinit();
+			sizeinit();
 			imginit();
 			scriptinit();
 		}
@@ -30,11 +34,21 @@ package
 			type = "entity";
 		}
 		
+		public function add_rectimg(w:int, h:int, color:int):void {
+			img = Image.createRect(w, h, color);
+			(graphic as Graphiclist).add(img);
+			center(img);
+		}
+		
+		public function center(image:Image):void {
+			image.centerOO();
+			image.x = image.width/2; image.y = image.height/2;
+		}
+		
 		public function imginit():void {
 			// add images here
 			// (further) images should be referenced by variable name
-			img = Image.createRect(host.track.size, host.track.size, 0xC0C0C0);
-			(graphic as Graphiclist).add(img);
+			add_rectimg(width, height, 0xC0C0C0);
 		}
 		
 		public function scriptinit():void {			
@@ -63,6 +77,26 @@ package
 		
 		public function die():void {
 			host.remove(this);
+		}
+		
+		public function alignx(hit:Gentity):void {
+			if (dx >= 0) x = hit.x - width;
+			else if (dx < 0) x = hit.x + hit.width;
+			
+			dx = 0;
+		}
+		public function aligny(hit:Gentity):void {
+			if (dy >= 0) y = hit.y - height;
+			else if (dy < 0) y = hit.y + hit.height;
+			
+			dy = 0;
+		}
+		
+		public function movex():void {
+			x += dx;
+		}
+		public function movey():void {
+			y += dy;
 		}
 		
 		override public function update():void {
