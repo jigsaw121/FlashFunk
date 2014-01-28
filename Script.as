@@ -16,12 +16,16 @@ package
 		
 		public function set_target(_target:Gentity):void {
 			target = _target;
+			targetinit();
 		}
 		
-		public function track():Tracker {
+		public function targetinit():void {
+		}
+		
+		private function track():Tracker {
 			return world().track;
 		}
-		public function world():GenWorld {
+		private function world():GenWorld {
 			return target.host;
 		}
 		

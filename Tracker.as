@@ -15,18 +15,18 @@ package
 		
 		public function Tracker(_host:GenWorld) {
 			super(_host);
+			add_script(new ScriptAuto(function ():void {
+				frame++;
+			}));
+			add_script(new ScriptAuto(function ():void {
+				if (Input.pressed(Key.R)) 
+					host.reset();
+			}));
 		}
 		
 		override public function init():void {
 		}
 		
-		override public function update():void {
-			if (Input.pressed(Key.R)) {
-				host.reset();
-				return;
-			}
-			frame++;
-		}
 	}
 	
 }
