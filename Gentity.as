@@ -23,6 +23,7 @@ package
 			width = host.track.size; height = host.track.size;
 			typeinit();
 			imginit();
+			scriptinit();
 		}
 		
 		public function typeinit():void {
@@ -34,6 +35,9 @@ package
 			// (further) images should be referenced by variable name
 			img = Image.createRect(host.track.size, host.track.size, 0xC0C0C0);
 			(graphic as Graphiclist).add(img);
+		}
+		
+		public function scriptinit():void {			
 		}
 		
 		public function add_script(sc:Script):Script {

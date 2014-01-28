@@ -2,7 +2,7 @@ package
 {
 	public class ScriptRotate extends Script
 	{
-		private var speed:Number;
+		public var speed:Number;
 		
 		public function ScriptRotate(_speed:Number) {
 			super();

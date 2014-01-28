@@ -17,16 +17,7 @@ package
 			spawn();
 		}
 		public function spawn():void {
-			var g:Gentity = new Gentity(this, 36, 36);
-			add(g);
-			g.add_script(new ScriptMovement());
-			g.add_script(new ScriptRotate(2.2));
-			g.add_script(new ScriptDelay(30, function():void {
-				g.remove_script_type("movement");
-			}));
-			g.add_script(new ScriptTrigger(function():Boolean {
-				return g.x < 0;
-			}, this.reset));
+			add(new TestEntity(this, track.scr_w/2, 36));
 		}
 	}
 	
