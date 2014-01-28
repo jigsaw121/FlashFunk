@@ -3,8 +3,17 @@ package
 	public class Script
 	{
 		public var target:Gentity;
+		public var type:String;
 		
-		public function Script(_target:Gentity) {
+		public function Script() {
+			init();
+		}
+		
+		public function init():void {
+			type = "script";
+		}
+		
+		public function set_target(_target:Gentity):void {
 			target = _target;
 		}
 		

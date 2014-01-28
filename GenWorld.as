@@ -13,6 +13,16 @@ package
 			removeAll();
 			track = new Tracker(this);
 			add(track);
+			
+			spawn();
+		}
+		public function spawn():void {
+			var g:Gentity = new Gentity(this, 36, 36);
+			add(g);
+			g.add_script(new ScriptMovement());
+			g.add_script(new ScriptDelay(30, function ():void {
+				g.remove_script_type("movement");
+			}));
 		}
 	}
 	

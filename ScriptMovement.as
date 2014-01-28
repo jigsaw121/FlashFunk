@@ -11,11 +11,14 @@ package
 		public var slow:Number = 1.21;
 		public var grav:Number = 0.2;
 		
-		public function ScriptMovement(_target:Gentity) {
-			super(_target);
+		public function ScriptMovement() {
 		}
 		
-		public function move():void {
+		override public function init():void {
+			type = "movement";
+		}
+		
+		private function move():void {
 			if (Input.pressed(Key.LEFT)) {
 				if (target.dx > 0) target.dx = 0;
 				target.dx -= acc;
@@ -31,7 +34,7 @@ package
 			target.y += target.dy;
 		}
 		
-		public function act():void {
+		override public function act():void {
 			move();
 		}
 	}

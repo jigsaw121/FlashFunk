@@ -36,6 +36,30 @@ package
 			(graphic as Graphiclist).add(img);
 		}
 		
+		public function add_script(sc:Script):void {
+			scripts.push(sc);
+			sc.set_target(this);
+		}
+		
+		public function remove_script(sc:Script):void {
+			var i:int = scripts.indexOf(sc);
+			if (i == -1) return;
+			
+			scripts.splice(i, 1);
+		}
+		
+		public function remove_script_type(sct:String):void {
+			for (var i:int = scripts.length-1; i>=0; i--) {
+				if (scripts[i].type == sct) {
+					scripts.splice(i, 1);
+				}
+			}
+		}
+		
+		public function die():void {
+			host.remove(this);
+		}
+		
 		override public function update():void {
 			for each (var sc:Script in scripts) {
 				sc.act();
