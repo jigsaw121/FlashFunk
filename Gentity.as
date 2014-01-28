@@ -18,9 +18,14 @@ package
 			init();
 		}
 		
+		public function typeinit():void {
+			type = "entity";
+		}
+		
 		public function init():void {
 			// add scripts here
 			width = host.track.size; height = host.track.size;
+			typeinit();
 			imginit();
 		}
 		
