@@ -23,6 +23,9 @@ package
 			g.add_script(new ScriptDelay(30, function ():void {
 				g.remove_script_type("movement");
 			}));
+			g.add_script(new ScriptTrigger(function ():Boolean {
+				return g.x < 0;
+			}, this.reset));
 		}
 	}
 	
