@@ -27,8 +27,8 @@ package
 			target.dx /= slow;
 			target.dy += grav;
 			
-			x += dx;
-			y += dy;
+			target.x += target.dx;
+			target.y += target.dy;
 		}
 		
 		public function act():void {
