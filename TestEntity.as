@@ -10,7 +10,9 @@ package
 		
 		override public function scriptinit():void {
 			var mvmt:ScriptMovement = add_script(new ScriptMovement()) as ScriptMovement;
+			
 			add_script(new ScriptRotate(2.2));
+			
 			add_script(new ScriptDelay(75, function():void {
 				remove_script_type("movement");
 				add_script(new ScriptAuto(function():void {
@@ -21,6 +23,7 @@ package
 				}));
 			}));
 			
+			// note that the trigger script only happens once in contrast to autoscripts
 			add_script(new ScriptTrigger(function():Boolean {
 				return x < 0 || x > host.track.scr_w;
 			}, host.reset));
