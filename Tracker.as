@@ -7,6 +7,7 @@ package
 	public class Tracker extends Gentity
 	{
 		// manager sorta class, used for global data/updates etc.
+		
 		public var frame:int = 0;
 		public const size:int = 24;
 		public const scr_w:int = 320;

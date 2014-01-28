@@ -2,8 +2,8 @@ package
 {
 	public class ScriptTrigger extends Script
 	{
-		// basically a variation on the delay function (with no predefined delay)
-		// catches events and gives a result
+		// waits for a condition to happen, triggers a consequence
+		
 		public var condition:Function;
 		public var callback:Function;
 		
@@ -19,7 +19,6 @@ package
 			if (condition()) {
 				callback();
 				target.remove_script(this);
-				return;
 			}
 		}
 		
