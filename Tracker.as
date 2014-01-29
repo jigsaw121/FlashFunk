@@ -1,6 +1,5 @@
 package 
 {
-	import net.flashpunk.Entity;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 

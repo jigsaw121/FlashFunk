@@ -1,6 +1,5 @@
 package 
 {
-	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Text;
 
