@@ -14,9 +14,9 @@ package
 			var mvmt:ScriptMovement = add_script(new ScriptMovement()) as ScriptMovement;
 
 			// script order matters
-			add_script(new ScriptAuto(movex));
+			always(movex);
 			add_script(new ScriptCollision("solid", alignx));
-			add_script(new ScriptAuto(movey));
+			always(movey);
 			add_script(new ScriptCollision("solid", aligny));
 			
 			// doesn't matter that the timer and stop scripts have circular dependency
@@ -41,26 +41,25 @@ package
 
 			add_script(new ScriptRotate(2.2));
 			
-			var timer:ScriptDelay = add_script(new ScriptDelay(125, function():void {
+			var timer:ScriptDelay = delay(125, function():void {
 				add_script(stop);
 
 				host.track.announce("time out");
 				host.track.reset(140);
+			});
 			
-			})) as ScriptDelay;
-			
-			host.add(new GUIText(host, 0, 0, function():String {
+			write(0, 0, function():String {
 				return timer.delay.toString();
-			}));
+			});
 			
 			// note that the trigger script only happens once in contrast to autoscripts
-			add_script(new ScriptTrigger(function():Boolean {
+			when(function():Boolean {
 				return x < 0 || x+width > host.track.scr_w;
-			}, die));
+			}, die);
 			
-			add_script(new ScriptAuto(function():void {
+			always(function():void {
 				if (y > host.track.scr_h) y = 0;
-			}));
+			});
 			
 		}
 		

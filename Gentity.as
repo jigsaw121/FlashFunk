@@ -99,6 +99,19 @@ package
 			y += dy;
 		}
 		
+		public function when(condition:Function, result:Function):ScriptTrigger {
+			return add_script(new ScriptTrigger(condition, result)) as ScriptTrigger;
+		}
+		public function always(action:Function):ScriptAuto {
+			return add_script(new ScriptAuto(action)) as ScriptAuto;
+		}
+		public function delay(frames:int, callback:Function):ScriptDelay {
+			return add_script(new ScriptDelay(frames, callback)) as ScriptDelay;
+		}
+		public function write(_x:Number, _y:Number, msg:Function):GUIText {
+			return host.add(new GUIText(host, _x, _y, msg)) as GUIText;
+		}
+		
 		override public function update():void {
 			for each (var sc:Script in scripts) {
 				sc.act();

@@ -15,52 +15,52 @@ package
 		
 		public function Tracker(_host:GenWorld) {
 			super(_host);
-			add_script(new ScriptAuto(function():void {
+			always((function():void {
 				frame++;
 			}));
-			add_script(new ScriptAuto(function():void {
+			always((function():void {
 				if (Input.pressed(Key.R)) host.reset();
 			}));
 		}
 		
-		public function reset(delay:int):void {
+		public function reset(frames:int):void {
 			// delayed reset
-			add_script(new ScriptDelay(delay, host.reset));
+			delay(frames, host.reset);
 		}
 		
 		public function announce(msg:String):void {
 			// flashy scrolling text
-			var anc:GUIText = host.add(new GUIText(host, scr_w / 2, scr_h, function():String {
+			var anc:GUIText = write(scr_w / 2, scr_h, function():String {
 				return msg;
-			})) as GUIText;
+			});
 			anc.center(anc.img);
-			var sc:Script = add_script(new ScriptScroll(0, -2));
-			sc.set_target(anc);
+			var scroll:Script = add_script(new ScriptScroll(0, -2));
+			scroll.set_target(anc);
 			
 			// pause in the center of the screen, then scroll up again
-			add_script(new ScriptTrigger(function():Boolean 
+			when(function():Boolean 
 			{
 				return anc.y <= scr_h/2;
 			},
 			function():void 
 			{
-				remove_script(sc);
+				remove_script(scroll);
 				
-				add_script(new ScriptDelay(30, function():void 
+				delay(30, function():void 
 				{
-					add_script(sc);
+					add_script(scroll);
 					// have to re-set target because of add_script
-					sc.set_target(anc);
-				}));
+					scroll.set_target(anc);
+				});
 				
-			}));
+			});
 			
-			add_script(new ScriptTrigger(function():Boolean {
+			when(function():Boolean {
 				return anc.y < -24;
 			}, 
 			function():void {
 				anc.die();
-			}));
+			});
 		}
 		
 		override public function init():void {

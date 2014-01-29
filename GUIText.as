@@ -8,12 +8,11 @@ package
 	{
 		// visualizes a text output by the msg function
 		
-		public function GUIText(_host:GenWorld, _x:int, _y:int, msg:Function):void {
+		public function GUIText(_host:GenWorld, _x:Number, _y:Number, msg:Function):void {
 			super(_host, _x, _y);
-			var sc:Script = add_script(new ScriptAuto(function():void {
+			always(function():void {
 				(img as Text).text = msg();
-			}));
-			sc.act();
+			}).act();
 		}
 		
 		override public function center(image:Image):void {
