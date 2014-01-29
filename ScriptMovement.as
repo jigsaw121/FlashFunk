@@ -3,7 +3,7 @@ package
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	
-	public class ScriptMovement extends Script
+	public class ScriptMovement extends ScriptAuto
 	{
 		// platformer movement
 		
@@ -12,14 +12,14 @@ package
 		public var grav:Number = 0.2;
 		
 		public function ScriptMovement() {
-			super();
+			super(move);
 		}
 		
 		override public function init():void {
 			type = "movement";
 		}
 		
-		private function move():void {
+		public function move():void {
 			if (Input.check(Key.LEFT)) {
 				if (target.dx > 0) target.dx = 0;
 				target.dx -= acc;
@@ -32,9 +32,6 @@ package
 			target.dy += grav;
 		}
 		
-		override public function act():void {
-			move();
-		}
 	}
 	
 }
