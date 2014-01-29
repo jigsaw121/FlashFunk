@@ -1,8 +1,8 @@
 package 
 {
-	public class TestEntity extends Gentity 
+	public class Player extends Gentity 
 	{
-		public function TestEntity(_host:GenWorld, _x:Number=0.0, _y:Number=0.0) {
+		public function Player(_host:GenWorld, _x:Number=0.0, _y:Number=0.0) {
 			// could be in a manually called init() function
 			// so everything doesn't have to take the same arguments
 			super(_host, _x, _y);
