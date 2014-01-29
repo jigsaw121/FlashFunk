@@ -12,7 +12,7 @@ package
 			FP.screen.scale = 2;
 			FP.volume = 0.4;
 			
-			FP.world = new GenWorld();
+			FP.world = new ExampleWorld();
 		}
 
 		override public function init():void {
