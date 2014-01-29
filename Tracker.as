@@ -15,12 +15,13 @@ package
 		
 		public function Tracker(_host:GenWorld) {
 			super(_host);
-			always((function():void {
+		
+			always(function():void {
 				frame++;
-			}));
-			always((function():void {
+			});
+			always(function():void {
 				if (Input.pressed(Key.R)) host.reset();
-			}));
+			});
 		}
 		
 		public function reset(frames:int):void {
@@ -34,6 +35,7 @@ package
 				return msg;
 			});
 			anc.center(anc.img);
+
 			var scroll:Script = add_script(new ScriptScroll(0, -2));
 			scroll.set_target(anc);
 			
@@ -52,7 +54,6 @@ package
 					// have to re-set target because of add_script
 					scroll.set_target(anc);
 				});
-				
 			});
 			
 			when(function():Boolean {

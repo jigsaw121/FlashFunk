@@ -43,7 +43,6 @@ package
 			
 			var timer:ScriptDelay = delay(125, function():void {
 				add_script(stop);
-
 				host.track.announce("time out");
 				host.track.reset(140);
 			});
@@ -55,12 +54,12 @@ package
 			// note that the trigger script only happens once in contrast to autoscripts
 			when(function():Boolean {
 				return x < 0 || x+width > host.track.scr_w;
-			}, die);
+			}, 
+			die);
 			
 			always(function():void {
 				if (y > host.track.scr_h) y = 0;
 			});
-			
 		}
 		
 		override public function die():void {
