@@ -18,9 +18,13 @@ package
 			image.x = -(image as Text).width/2;
 		}
 		
+		public function fontoptions(txt:Text):void {
+			// override to change font options
+		}
+		
 		override public function imginit():void {
 			img = new Text("", 0, 0);
-			// font options here
+			fontoptions((img as Text));
 			addGraphic(img);
 		}
 	}

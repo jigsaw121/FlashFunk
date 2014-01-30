@@ -8,10 +8,6 @@ package
 			super();
 		}
 		
-		override public function reset():void {
-			FP.world = new ExampleWorld();
-		}
-		
 		override public function spawn():void {
 			add(new Player(this, 7*24, 36));
 			add(new BGTile(this, 0, 0));

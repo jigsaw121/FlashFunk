@@ -15,7 +15,7 @@ package
 			type = "trigger";
 		}
 		
-		private function trigger():void {
+		public function trigger():void {
 			if (condition()) {
 				callback();
 				target.remove_script(this);

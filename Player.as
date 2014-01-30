@@ -57,9 +57,10 @@ package
 			}, 
 			die);
 			
-			always(function():void {
-				if (y > host.track.scr_h) y = 0;
-			});
+			whenever(function():Boolean {
+				return y > host.track.scr_h;
+			}, 
+			function():void { y = 0; });
 		}
 		
 		override public function die():void {

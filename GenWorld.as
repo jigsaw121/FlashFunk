@@ -18,7 +18,8 @@ package
 			spawn();
 		}
 		public function reset():void {
-			FP.world = new GenWorld();
+			// get class type, then create a new instance of it
+			FP.world = new (Object(this).constructor)();
 		}
 		
 		public function counttype(strtype:String):int {
