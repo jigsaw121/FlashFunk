@@ -22,18 +22,22 @@ package
 			// doesn't matter that the timer and stop scripts have circular dependency
 			// because of closure scope
 			var stop:Script = new ScriptAuto(function():void {
-				remove_script(timer);
-				remove_script_type("movement");
-				remove_script_type("collision");
 				dx /= mvmt.slow; dy /= mvmt.slow;
 			});
 			
 			add_script(new ScriptCollision("collectible", function(hit:Gentity):void {
 				hit.die();
 				timer.delay += 75;
+				
 				// the count doesn't immediately change when removing from world
+				// this could be in a 'when' script, but you'd have to check on every frame
 				if (host.counttype("collectible") == 1) {
+					remove_script(timer);
+					remove_script_type("movement");
+					remove_script_type("collision");
+
 					add_script(stop);
+					
 					host.track.announce("clear");
 					host.track.reset(140);
 				}
@@ -57,6 +61,7 @@ package
 			}, 
 			die);
 			
+			// basically the same as an 'always' with a conditional
 			whenever(function():Boolean {
 				return y > host.track.scr_h;
 			}, 
