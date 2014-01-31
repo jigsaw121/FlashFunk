@@ -117,6 +117,9 @@ package
 		public function write(_x:Number, _y:Number, msg:Function):GUIText {
 			return host.add(new GUIText(host, _x, _y, msg)) as GUIText;
 		}
+		public function onclick(callback:Function):ScriptOnClick {
+			return add_script(new ScriptOnClick(callback)) as ScriptOnClick;
+		}
 
 		public function duplicate(_x:Number, _y:Number):void {
 			host.add(new (Object(this).constructor)(host,_x,_y));

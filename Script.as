@@ -22,10 +22,10 @@ package
 		public function targetinit():void {
 		}
 		
-		private function track():Tracker {
+		public function track():Tracker {
 			return world().track;
 		}
-		private function world():GenWorld {
+		public function world():GenWorld {
 			return target.host;
 		}
 		
