@@ -120,6 +120,9 @@ package
 		public function onclick(callback:Function):ScriptOnClick {
 			return add_script(new ScriptOnClick(callback)) as ScriptOnClick;
 		}
+		public function onhover(callback:Function):ScriptOnHover {
+			return add_script(new ScriptOnHover(callback)) as ScriptOnHover;
+		}
 
 		public function duplicate(_x:Number, _y:Number):void {
 			host.add(new (Object(this).constructor)(host,_x,_y));

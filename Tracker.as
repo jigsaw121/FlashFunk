@@ -8,9 +8,11 @@ package
 		// manager sorta class, used for global data/updates etc.
 		
 		public var frame:int = 0;
+		
 		public const size:int = 24;
 		public const scr_w:int = 320;
 		public const scr_h:int = 200;
+		
 		public var mousex:int;
 		public var mousey:int;
 		public var lclick:Boolean;
