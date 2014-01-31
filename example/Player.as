@@ -9,15 +9,23 @@ package example
 		}
 		
 		override public function scriptinit():void {
-			// this movement script only inputs dx/dy - you apply them separately
+			// these movement scripts only input dx/dy - you apply them separately
 			// for example, axis separation makes tile aligning easier
-			var mvmt:ScriptPlatformerMovement = add_script(new ScriptPlatformerMovement()) as ScriptPlatformerMovement;
+			var slowdown:Number = 1.21;
+			add_script(new ScriptPlatformerMovement(1.0, slowdown));
+			add_script(new ScriptGravity(0.2));
 
+			/*var jump:Script = add_script(new ScriptJump(6.0));*/
+			
 			// script order matters
 			always(movex);
 			add_script(new ScriptCollision("solid", alignx));
 			always(movey);
-			add_script(new ScriptCollision("solid", aligny));
+			var yhit:ScriptTriggerRepeat = add_script(new ScriptCollision("solid", aligny)) as ScriptTriggerRepeat;
+			/*yhit.ontrigger = function():void {
+				if (dy < 0 || has_script(jump)) return;
+				add_script(jump);
+			}*/
 			
 			function end(msg:String):void {
 				remove_script(timer);
@@ -28,7 +36,7 @@ package example
 				host.track.reset(140);
 
 				always(function():void { 
-					dx /= mvmt.slow; dy /= mvmt.slow;
+					dx /= slowdown; dy /= slowdown;
 				});
 			}
 			

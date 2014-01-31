@@ -9,6 +9,10 @@ package
 		override public function lclick():Boolean {
 			return true;
 		}
+		
+		override public function init():void {
+			type = "onhover";
+		}
 	}
 	
 }

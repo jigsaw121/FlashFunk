@@ -1,12 +1,16 @@
 package 
 {
-	public class ScriptCollision extends ScriptAuto
+	public class ScriptCollision extends ScriptTriggerRepeat
 	{
 		public function ScriptCollision(colltype:String, result:Function):void {
-			super(function():void {
-				var hit:Gentity = target.collide(colltype, target.x, target.y);
-				if (hit) result(hit);
-			})
+			var hit:Gentity;
+			super(function():Boolean {
+				hit = target.collide(colltype, target.x, target.y) as Gentity;
+				return hit!=null;
+			},
+			function():void {
+				result(hit);
+			});
 		}
 		
 		override public function init():void {
