@@ -1,4 +1,4 @@
-package 
+package example
 {
 	public class Player extends Gentity 
 	{
@@ -11,7 +11,7 @@ package
 		override public function scriptinit():void {
 			// this movement script only inputs dx/dy - you apply them separately
 			// for example, axis separation makes tile aligning easier
-			var mvmt:ScriptMovement = add_script(new ScriptMovement()) as ScriptMovement;
+			var mvmt:ScriptPlatformerMovement = add_script(new ScriptPlatformerMovement()) as ScriptPlatformerMovement;
 
 			// script order matters
 			always(movex);
@@ -19,11 +19,18 @@ package
 			always(movey);
 			add_script(new ScriptCollision("solid", aligny));
 			
-			// doesn't matter that the timer and stop scripts have circular dependency
-			// because of closure scope
-			var stop:Script = new ScriptAuto(function():void {
-				dx /= mvmt.slow; dy /= mvmt.slow;
-			});
+			function end(msg:String):void {
+				remove_script(timer);
+				remove_script_type("movement");
+				remove_script_type("collision");
+				
+				host.track.announce(msg);
+				host.track.reset(140);
+
+				always(function():void { 
+					dx /= mvmt.slow; dy /= mvmt.slow;
+				});
+			}
 			
 			add_script(new ScriptCollision("collectible", function(hit:Gentity):void {
 				hit.die();
@@ -32,23 +39,16 @@ package
 				// the count doesn't immediately change when removing from world
 				// this could be in a 'when' script, but you'd have to check on every frame
 				if (host.counttype("collectible") == 1) {
-					remove_script(timer);
-					remove_script_type("movement");
-					remove_script_type("collision");
-
-					add_script(stop);
-					
-					host.track.announce("clear");
-					host.track.reset(140);
+					end("clear");
 				}
 			}));
 
 			add_script(new ScriptRotate(2.2));
 			
+			// doesn't matter that the timer and stop scripts have circular dependency
+			// because of closure scope
 			var timer:ScriptDelay = delay(125, function():void {
-				add_script(stop);
-				host.track.announce("time out");
-				host.track.reset(140);
+				end("time out");
 			});
 			
 			write(0, 0, function():String {
@@ -65,7 +65,7 @@ package
 			whenever(function():Boolean {
 				return y > host.track.scr_h;
 			}, 
-			function():void { y = 0; });
+			function():void { y = 0; } );
 		}
 		
 		override public function die():void {

@@ -1,10 +1,10 @@
-package 
+package example
 {
 	import net.flashpunk.graphics.Image;
 	
-	public class BGTile extends Gentity
+	public class AnimTile extends Gentity
 	{
-		public function BGTile(_host:GenWorld, _x:Number, _y:Number) {
+		public function AnimTile(_host:GenWorld, _x:Number, _y:Number) {
 			super(_host, _x, _y);
 			layer = 1;
 			
@@ -13,7 +13,7 @@ package
 				if (_x >= host.track.scr_w) { _x = 0; _y += 24; }
 				if (_y >= host.track.scr_h) return;
 				
-				host.add(new BGTile(host, _x, _y));
+				host.add(new AnimTile(host, _x, _y));
 			});
 			
 			var sc:Script = add_script(new ScriptRotate(5));

@@ -1,5 +1,8 @@
 package
 {
+	// replace references to ExampleWorld here with your own creations
+	import example.ExampleWorld;
+	
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
 	

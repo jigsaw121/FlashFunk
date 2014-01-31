@@ -10,9 +10,13 @@ package
 		public function GenWorld() {
 			init();
 		}
+		
+		public function make_tracker():Tracker {
+			return new Tracker(this);
+		}
 		public function init():void {
 			removeAll();
-			track = new Tracker(this);
+			track = make_tracker();
 			add(track);
 			
 			spawn();

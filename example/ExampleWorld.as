@@ -1,4 +1,4 @@
-package 
+package example
 {
 	import net.flashpunk.FP;
 	
@@ -8,9 +8,13 @@ package
 			super();
 		}
 		
+		override public function make_tracker():Tracker {
+			return new FlashyTracker(this);
+		}
+		
 		override public function spawn():void {
 			add(new Player(this, 7*24, 36));
-			add(new BGTile(this, 0, 0));
+			add(new AnimTile(this, 0, 0));
 			add(new Collectible(this, 6*24, 0));
 			add(new Collectible(this, 3*24, 3*24));
 			add(new Collectible(this, 11*24, 5*24));

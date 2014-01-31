@@ -23,7 +23,6 @@ package
 		}
 		
 		public function init():void {
-			// add scripts here
 			typeinit();
 			sizeinit();
 			imginit();
@@ -51,7 +50,8 @@ package
 			add_rectimg(width, height, 0xC0C0C0);
 		}
 		
-		public function scriptinit():void {			
+		public function scriptinit():void {
+			// add scripts here
 		}
 		
 		public function add_script(sc:Script):Script {

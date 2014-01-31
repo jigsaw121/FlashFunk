@@ -3,7 +3,7 @@ package
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	
-	public class ScriptMovement extends ScriptAuto
+	public class ScriptPlatformerMovement extends ScriptAuto
 	{
 		// platformer movement
 		
@@ -11,7 +11,7 @@ package
 		public var slow:Number = 1.21;
 		public var grav:Number = 0.2;
 		
-		public function ScriptMovement() {
+		public function ScriptPlatformerMovement() {
 			super(move);
 		}
 		
