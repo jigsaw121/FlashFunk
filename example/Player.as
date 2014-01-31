@@ -20,7 +20,8 @@ package example
 			always(movex);
 			add_script(new ScriptCollision("solid", alignx));
 			always(movey);
-			var yhit:ScriptTriggerRepeat = add_script(new ScriptCollision("solid", aligny)) as ScriptTriggerRepeat;
+			var yhit:ScriptTrigger = add_script(new ScriptCollision("solid", aligny)) as ScriptTrigger;
+			// if you want jumping, just uncomment this
 			/*yhit.ontrigger = function():void {
 				if (dy < 0) return;
 				while (scriptcount(jump)<maxjumps)
