@@ -1,6 +1,6 @@
 package 
 {
-	public class ScriptOnClick extends ScriptTrigger
+	public class ScriptOnClick extends ScriptTriggerRepeat
 	{
 		public function ScriptOnClick(_callback:Function) {
 			super(function():Boolean {
