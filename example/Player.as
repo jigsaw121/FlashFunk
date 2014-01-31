@@ -15,12 +15,11 @@ package example
 			add_script(new ScriptPlatformerMovement(1.0, slowdown));
 			add_script(new ScriptGravity(0.2));
 
-			
 			// script order matters
 			always(movex);
-			add_script(new ScriptCollision("solid", alignx));
+			oncollision("solid", alignx);
 			always(movey);
-			var yhit:ScriptTrigger = add_script(new ScriptCollision("solid", aligny)) as ScriptTrigger;
+			var yhit:ScriptCollision = oncollision("solid", aligny);
 			// if you want jumping, just uncomment this
 			/*yhit.ontrigger = function():void {
 				if (dy < 0) return;
@@ -43,7 +42,7 @@ package example
 				});
 			}
 			
-			add_script(new ScriptCollision("collectible", function(hit:Gentity):void {
+			oncollision("collectible", function(hit:Gentity):void {
 				hit.die();
 				timer.delay += 75;
 				
@@ -52,7 +51,7 @@ package example
 				if (host.counttype("collectible") == 1) {
 					end("clear");
 				}
-			}));
+			});
 
 			add_script(new ScriptRotate(2.2));
 			
