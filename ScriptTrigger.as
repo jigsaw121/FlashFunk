@@ -6,8 +6,10 @@ package
 		
 		public var condition:Function;
 		public var callback:Function;
+		public var ontrigger:Function;
 		
 		public function ScriptTrigger(_condition:Function, _callback:Function) {
+			ontrigger = function():void {}
 			condition = _condition; callback = _callback;
 		}
 		
@@ -18,7 +20,7 @@ package
 		public function trigger():void {
 			if (condition()) {
 				callback();
-				target.remove_script(this);
+				remove();
 			}
 		}
 		
