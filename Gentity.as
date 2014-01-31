@@ -123,6 +123,9 @@ package
 		public function onhover(callback:Function):ScriptOnHover {
 			return add_script(new ScriptOnHover(callback)) as ScriptOnHover;
 		}
+		public function has_script(sc:Script):Boolean {
+			return scripts.indexOf(sc) != -1;
+		}
 
 		public function duplicate(_x:Number, _y:Number):void {
 			host.add(new (Object(this).constructor)(host,_x,_y));
