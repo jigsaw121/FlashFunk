@@ -126,6 +126,13 @@ package
 		public function has_script(sc:Script):Boolean {
 			return scripts.indexOf(sc) != -1;
 		}
+		public function scriptcount(sc:Script):int {
+			var out:int = 0;
+			for each (var sc2:Script in scripts) {
+				if (sc2 === sc) out++;
+			}
+			return out;
+		}
 
 		public function duplicate(_x:Number, _y:Number):void {
 			host.add(new (Object(this).constructor)(host,_x,_y));
@@ -133,7 +140,12 @@ package
 		
 		override public function update():void {
 			for each (var sc:Script in scripts) {
+				sc.used = false;
+			}
+			for each (sc in scripts) {
+				if (sc.used) continue;
 				sc.act();
+				sc.used = true;
 			}
 		}
 	}

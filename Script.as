@@ -5,8 +5,11 @@ package
 		// target could be typeless to allow scripts checking scripts
 		public var target:Gentity;
 		public var type:String;
+		public var onexpire:Function;
+		public var used:Boolean;
 		
 		public function Script() {
+			onexpire = function():void {}
 			init();
 		}
 		
@@ -27,6 +30,11 @@ package
 		}
 		public function world():GenWorld {
 			return target.host;
+		}
+		
+		public function remove():void {
+			target.remove_script(this);
+			onexpire();
 		}
 		
 		public function act():void {

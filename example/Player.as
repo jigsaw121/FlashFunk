@@ -15,7 +15,6 @@ package example
 			add_script(new ScriptPlatformerMovement(1.0, slowdown));
 			add_script(new ScriptGravity(0.2));
 
-			/*var jump:Script = add_script(new ScriptJump(6.0));*/
 			
 			// script order matters
 			always(movex);
@@ -23,9 +22,12 @@ package example
 			always(movey);
 			var yhit:ScriptTriggerRepeat = add_script(new ScriptCollision("solid", aligny)) as ScriptTriggerRepeat;
 			/*yhit.ontrigger = function():void {
-				if (dy < 0 || has_script(jump)) return;
-				add_script(jump);
-			}*/
+				if (dy < 0) return;
+				while (scriptcount(jump)<maxjumps)
+					add_script(jump);
+			}
+			var maxjumps:int = 2;
+			var jump:Script = new ScriptJump(4.0);*/
 			
 			function end(msg:String):void {
 				remove_script(timer);
@@ -71,9 +73,9 @@ package example
 			
 			// basically the same as an 'always' with a conditional
 			whenever(function():Boolean {
-				return y > host.track.scr_h;
+				return y > host.track.scr_h || y < 0;
 			}, 
-			function():void { y = 0; } );
+			function():void { y = (host.track.scr_h-Math.abs(y))%host.track.scr_h; } );
 		}
 		
 		override public function die():void {

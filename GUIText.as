@@ -14,6 +14,10 @@ package
 			}).act();
 		}
 		
+		override public function typeinit():void {
+			type = "guitext";
+		}
+		
 		override public function center(image:Image):void {
 			image.x = -(image as Text).width/2;
 		}
