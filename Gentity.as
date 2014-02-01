@@ -123,8 +123,8 @@ package
 		public function onhover(callback:Function):ScriptOnHover {
 			return add_script(new ScriptOnHover(callback)) as ScriptOnHover;
 		}
-		public function oncollision(_type:String, callback:Function):ScriptTriggerRepeat {
-			return add_script(new ScriptTriggerRepeat(_type, callback)) as ScriptTriggerRepeat;
+		public function oncollision(_type:String, callback:Function):ScriptCollision {
+			return add_script(new ScriptCollision(_type, callback)) as ScriptCollision;
 		}
 		
 		public function has_script(sc:Script):Boolean {
