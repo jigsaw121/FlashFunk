@@ -8,10 +8,6 @@ package coinget
 			super();
 		}
 		
-		override public function make_tracker():Tracker {
-			return new FlashyTracker(this);
-		}
-		
 		override public function spawn():void {
 			add(new CoinGetPlayer(this, 7*24, 36));
 			add(new AnimTile(this, 0, 0));

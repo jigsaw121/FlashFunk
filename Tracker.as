@@ -11,8 +11,8 @@ package
 		public var frame:int = 0;
 		
 		public var size:int = 24;
-		public var scr_w:int = 200;
-		public var scr_h:int = 320;
+		public var scr_w:int = 320;
+		public var scr_h:int = 200;
 		
 		public var mousex:int;
 		public var mousey:int;
