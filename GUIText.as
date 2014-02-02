@@ -29,6 +29,7 @@ package
 		
 		public function fontoptions(txt:Text):void {
 			// override to change font options
+			txt.font = "atari";
 		}
 		
 		override public function imginit():void {
