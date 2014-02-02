@@ -5,7 +5,7 @@ package coinget
 	public class CoinGetWorld extends GenWorld
 	{
 		public function CoinGetWorld() {
-			super();
+			track.scr_w = 320; track.scr_h = 200;
 		}
 		
 		override public function spawn():void {

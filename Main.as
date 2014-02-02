@@ -8,6 +8,9 @@ package
 	
 	public class Main extends Engine
 	{
+		[Embed(source = 'AtariST8x16SystemFont.ttf', embedAsCFF="false", fontFamily = 'atari')]
+		private const ATARI_FONT:Class;
+
 		public function Main() {
 			super(320, 200, 60, true);
 
