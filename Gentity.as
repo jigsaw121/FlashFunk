@@ -15,7 +15,7 @@ package
 		
 		public function Gentity(_host:GenWorld, _x:Number=0.0, _y:Number=0.0) {
 			host = _host; x = _x; y = _y;
-			graphic = new Graphiclist();
+			clear_images();
 			init();
 		}
 		
@@ -32,6 +32,10 @@ package
 		
 		public function typeinit():void {
 			type = "entity";
+		}
+		
+		public function clear_images():void {
+			graphic = new Graphiclist();
 		}
 		
 		public function add_rectimg(w:int, h:int, color:int):void {
