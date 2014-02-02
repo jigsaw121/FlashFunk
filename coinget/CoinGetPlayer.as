@@ -1,8 +1,8 @@
-package example
+package coinget
 {
-	public class Player extends Gentity 
+	public class CoinGetPlayer extends Gentity 
 	{
-		public function Player(_host:GenWorld, _x:Number=0.0, _y:Number=0.0) {
+		public function CoinGetPlayer(_host:GenWorld, _x:Number=0.0, _y:Number=0.0) {
 			// could be in a manually called init() function
 			// so everything doesn't have to take the same arguments
 			super(_host, _x, _y);
@@ -21,13 +21,13 @@ package example
 			always(movey);
 			var yhit:ScriptCollision = oncollision("solid", aligny);
 			// if you want jumping, just uncomment this
-			/*yhit.ontrigger = function():void {
+			yhit.ontrigger = function():void {
 				if (dy < 0) return;
 				while (scriptcount(jump)<maxjumps)
 					add_script(jump);
 			}
 			var maxjumps:int = 2;
-			var jump:Script = new ScriptJump(4.0);*/
+			var jump:Script = new ScriptJump(4.0);
 			
 			function end(msg:String):void {
 				remove_script(timer);
@@ -76,6 +76,9 @@ package example
 				return y > host.track.scr_h || y < 0;
 			}, 
 			function():void { y = (host.track.scr_h-Math.abs(y))%host.track.scr_h; } );
+			
+			var click:Script = onclick(function():void { host.track.announce("boobooo"); } );
+			click.onexpire = function():void { add_script(click); }
 		}
 		
 		override public function die():void {

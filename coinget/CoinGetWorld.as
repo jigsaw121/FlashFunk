@@ -1,10 +1,10 @@
-package example
+package coinget
 {
 	import net.flashpunk.FP;
 	
-	public class ExampleWorld extends GenWorld
+	public class CoinGetWorld extends GenWorld
 	{
-		public function ExampleWorld() {
+		public function CoinGetWorld() {
 			super();
 		}
 		
@@ -13,7 +13,7 @@ package example
 		}
 		
 		override public function spawn():void {
-			add(new Player(this, 7*24, 36));
+			add(new CoinGetPlayer(this, 7*24, 36));
 			add(new AnimTile(this, 0, 0));
 			add(new Collectible(this, 6*24, 0));
 			add(new Collectible(this, 3*24, 3*24));

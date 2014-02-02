@@ -12,6 +12,11 @@ package
 			always(function():void {
 				(img as Text).text = msg();
 			}).act();
+			
+			// all gui elements should have a low layer to be rendered last (on top)
+			layer = -64;
+			// and be independent of camera
+			img.scrollX = img.scrollY = 0;
 		}
 		
 		override public function typeinit():void {

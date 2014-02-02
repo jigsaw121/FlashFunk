@@ -12,6 +12,9 @@ package
 		}
 		
 		public function make_tracker():Tracker {
+			// if you want to add more functionalities to a tracker, override this
+			// (you might also want to add virtual functions to the basic tracker
+			// to not have to cast every time you refer to those)
 			return new Tracker(this);
 		}
 		public function init():void {

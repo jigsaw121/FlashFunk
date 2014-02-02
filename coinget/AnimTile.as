@@ -1,4 +1,4 @@
-package example
+package coinget
 {
 	import net.flashpunk.graphics.Image;
 	

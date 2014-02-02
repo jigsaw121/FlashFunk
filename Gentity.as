@@ -9,6 +9,7 @@ package
 		public var host:GenWorld;
 		public var scripts:Array = [];
 		public var img:Image = null;
+		public var angle:Number = 0.0; 
 		public var dx:Number = 0.0; 
 		public var dy:Number = 0.0;
 		
@@ -34,14 +35,23 @@ package
 		}
 		
 		public function add_rectimg(w:int, h:int, color:int):void {
-			img = Image.createRect(w, h, color);
-			(graphic as Graphiclist).add(img);
-			center(img);
+			make_img(Image.createRect(w, h, color));
 		}
 		
 		public function center(image:Image):void {
 			image.centerOO();
-			image.x = image.width/2; image.y = image.height/2;
+			image.x = image.scaledWidth/2-(image.scaledWidth-width)/2; 
+			image.y = image.scaledHeight/2-(image.scaledHeight-height)/2;
+		}
+		
+		public function adjust_angle(image:Image):void {
+			// FlashPunk's oddities I guess
+			image.angle = -todeg(angle)-90;
+		}
+		
+		public function make_img(image:Image):void {
+			img = (graphic as Graphiclist).add(image) as Image;
+			center(img);
 		}
 		
 		public function imginit():void {
@@ -75,6 +85,21 @@ package
 			}
 		}
 		
+		public function dir(speed:Number):void {
+			dx = Math.cos(angle)*speed; dy = Math.sin(angle)*speed;
+		}
+		
+		public function torad(d:Number):Number {
+			return d * Math.PI / 180.0;
+		}
+		public function todeg(d:Number):Number {
+			return d * 180.0 / Math.PI;
+		}
+		
+		public function oob():Boolean {
+			return x<-width || x>host.track.scr_w || y<-height || y>host.track.scr_h;
+		}
+		
 		public function die():void {
 			host.remove(this);
 		}
@@ -97,6 +122,10 @@ package
 		}
 		public function movey():void {
 			y += dy;
+		}
+		public function aim(target:Gentity):void {
+			angle = Math.atan2(target.y-y, target.x-x);
+			if (img) adjust_angle(img);
 		}
 		
 		public function when(condition:Function, result:Function):ScriptTrigger {

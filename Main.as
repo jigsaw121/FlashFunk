@@ -1,7 +1,7 @@
 package
 {
-	// replace references to ExampleWorld here with your own creations
-	import example.ExampleWorld;
+	// replace references to the example world here with your own creations
+	import coinget.CoinGetWorld;
 	
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
@@ -15,7 +15,7 @@ package
 			FP.screen.scale = 2;
 			FP.volume = 0.4;
 			
-			FP.world = new ExampleWorld();
+			FP.world = new CoinGetWorld();
 		}
 
 		override public function init():void {
