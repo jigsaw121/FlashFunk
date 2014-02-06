@@ -89,8 +89,20 @@ package
 			}
 		}
 		
-		public function dir(speed:Number):void {
-			dx = Math.cos(angle)*speed; dy = Math.sin(angle)*speed;
+		public function dir(_speed:Number):void {
+			dx = Math.cos(angle)*_speed; dy = Math.sin(angle)*_speed;
+		}
+		
+		public function announce(msg:String):Function {
+			return function():void {
+				host.track.announce(msg);
+			}
+		}
+		
+		public function mvmtdecay(decay:Number):Function {
+			return function():void {
+				dx /= decay; dy /= decay;
+			}
 		}
 		
 		public function torad(d:Number):Number {
