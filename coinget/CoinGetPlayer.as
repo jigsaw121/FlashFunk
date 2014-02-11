@@ -21,13 +21,13 @@ package coinget
 			always(movey);
 			var yhit:ScriptCollision = oncollision("solid", aligny);
 			// if you want jumping, just uncomment this
-			yhit.ontrigger = function():void {
+			/*yhit.ontrigger = function():void {
 				if (dy < 0) return;
 				while (scriptcount(jump)<maxjumps)
 					add_script(jump);
 			}
 			var maxjumps:int = 2;
-			var jump:Script = new ScriptJump(4.0);
+			var jump:Script = new ScriptJump(4.0);*/
 			
 			function end(msg:String):void {
 				remove_script(timer);
@@ -77,8 +77,8 @@ package coinget
 			}, 
 			function():void { y = (host.track.scr_h-Math.abs(y))%host.track.scr_h; } );
 			
-			var click:Script = onclick(function():void { host.track.announce("boobooo"); } );
-			click.onexpire = function():void { add_script(click); }
+			/*var click:Script = onclick(function():void { host.track.announce("it's me"); } );
+			click.onexpire = function():void { add_script(click); }*/
 		}
 		
 		override public function die():void {
