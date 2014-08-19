@@ -3,21 +3,21 @@ FlashFunk
 
 FlashFunk is a third-party extension library to FlashPunk, offering things like scripting tools, state machines, and generally helper basecode that speeds up development. It's designed with game jams in mind, and has been tested out in a few projects. 
 
-FlashFunk shifts the focus towards working with ideas and behaviours. Passing around functions just like any other data is a staple of Flashfunk. Relax and write things the obvious way without the environment's control flow interrupting your train of thought. Minimize the use of copypasting, throwaway variables, and programming "sub-tasks" that force you to switch to another environment before you can achieve your current task.
+FlashFunk shifts the focus towards working with ideas and behaviours. Passing around functions just like any other data is a staple of FlashFunk. Relax and write things the obvious way without the environment's control flow interrupting your train of thought. Minimize the use of copypasting, throwaway variables, and programming "sub-tasks" that force you to switch to another environment before you can achieve your current task.
 
 -
 
-Here's a crash course of some usable Flashfunk features. Note that as Flashfunk is still experimental and essentially basecode for my own purposes, there are quite a few unfinished and undocumented things left in this build. But you can already go far with the following.
+Here's a crash course of some usable FlashFunk features. Note that as FlashFunk is still experimental and essentially basecode for my own purposes, there are quite a few unfinished and undocumented things left in this build. But you can already go far with the following.
 
-General
+*General*
 
 Inherit from GenWorld to define scenes. Inherit from Gentity to define entities, then toss them to a GenWorld. Give entities scripts and states to define behaviour. Use closures, helper methods and newfangled scripty features to your advantage.
 
 Override a Gentity's *init methods to define scripts, states, images. Refer to the world with the 'host' variable. Search for other entities with 'all' and apply some function to multiple entities with 'every'. See also Gentity.as for extra info and assorted helper methods.
 
-Scripts
+*Scripts*
 
-Scripts are the core of Flashfunk. They're objects that can be added to and removed from entities, and describe some sort of behaviour. Entities should use exclusively scripts for their game logic - in contrast with Flashpunk, instead of overriding the 'update' method, add scripts with function parameters to entities.
+Scripts are the core of FlashFunk. They're objects that can be added to and removed from entities, and describe some sort of behaviour. Entities should use exclusively scripts for their game logic - in contrast with FlashPunk, instead of overriding the 'update' method, add scripts with function parameters to entities.
 
 always(func) simply repeats the function 'func' every frame.
 delay(frames, func) triggers 'func' after the desired amount of frames, then removes itself.
@@ -32,7 +32,7 @@ All of these Gentity methods define a script and add it to the entity for conven
 
 When passing callbacks to scripts, be vary of closure scopes messing with the 'this' keyword! Consider defining complicated functions as an entity's methods.
 
-States
+*States*
 
 States help you think about game logic on the behaviour level. They're essentially a way to define entities' changing behaviour in flowchart form, and go well with scripts.
 
@@ -40,11 +40,11 @@ States help you think about game logic on the behaviour level. They're essential
 
 'duringstate' is the actual behaviour that happens during a state. If, for example, an entity's movement pattern changes, it's best to implement the patterns as two separate methods and script them into different states.
 
-duringstate("walking", always(walk))
-onstate("onladder", function():void { trace("Getting on a ladder") })
-duringstate("onladder", always(climb))
-offstate("onladder", function():void { trace("Getting off a ladder") })
-tostate("walking")
+>duringstate("walking", always(walk))  
+>onstate("onladder", function():void { trace("Getting on a ladder") })  
+>duringstate("onladder", always(climb))  
+>offstate("onladder", function():void { trace("Getting off a ladder") })  
+>tostate("walking")  
 
 What 'duringstate' does in a nutshell is that it associates a script with a state. A script is added when transitioning to the state(s) with which it is associated, and removed again on transitions away. Note that there is no need to explicity "declare" a state. Rather, you only link behaviours to string ids. Transitioning into a state with no associated behaviour simply means there won't be any associated behaviour. 
 
