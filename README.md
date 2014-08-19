@@ -19,14 +19,14 @@ Override a Gentity's *init methods to define scripts, states, images. Refer to t
 
 Scripts are the core of FlashFunk. They're objects that can be added to and removed from entities, and describe some sort of behaviour. Entities should use exclusively scripts for their game logic - in contrast with FlashPunk, instead of overriding the 'update' method, add scripts with function parameters to entities.
 
-always(func) simply repeats the function 'func' every frame.
-delay(frames, func) triggers 'func' after the desired amount of frames, then removes itself.
-repeat(frames, func) is the same as 'delay', except it doesn't remove itself when 'func' is triggered.
-when(cond, func) takes a condition function 'cond' in addition to the action function 'func'. 'cond' must return a boolean, and when it returns true, 'func' is triggered. Removes itself on successful trigger.
-whenever(cond, func) is the same as 'when', except it doesn't remove itself when 'func' is triggered.
-until(cond, func) repeats 'func' every frame until 'cond' returns true.
-oncollision(type, func) executes 'func' whenever a collision with an object of the desired type is detected. One object is passed to 'func' at a time for processing, so correspondingly it needs to take one argument.
-onclick(func) and onhover(func) trigger 'func' based on mouse behaviour.
+always(func) simply repeats the function 'func' every frame.  
+delay(frames, func) triggers 'func' after the desired amount of frames, then removes itself.  
+repeat(frames, func) is the same as 'delay', except it doesn't remove itself when 'func' is triggered.  
+when(cond, func) takes a condition function 'cond' in addition to the action function 'func'. 'cond' must return a boolean, and when it returns true, 'func' is triggered. Removes itself on successful trigger.  
+whenever(cond, func) is the same as 'when', except it doesn't remove itself when 'func' is triggered.  
+until(cond, func) repeats 'func' every frame until 'cond' returns true.  
+oncollision(type, func) executes 'func' whenever a collision with an object of the desired type is detected. One object is passed to 'func' at a time for processing, so correspondingly it needs to take one argument.  
+onclick(func) and onhover(func) trigger 'func' based on mouse behaviour.  
 
 All of these Gentity methods define a script and add it to the entity for convenience. They also return the Script object for later reference, such as having only one copy of a script used in several places. Scripts can be manually added with add_script(sc) or removed with remove_script(sc). Once a script is added to an entity, its 'target' variable is set to that entity.
 
