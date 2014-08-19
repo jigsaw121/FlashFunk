@@ -32,6 +32,12 @@ package
 			return target.host;
 		}
 		
+		public function add():void {
+			target.add_script(this);
+		}
+		public function reset():void {
+
+		}
 		public function remove():void {
 			target.remove_script(this);
 			onexpire();

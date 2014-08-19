@@ -11,8 +11,10 @@ package
 		public var frame:int = 0;
 		
 		public var size:int = 24;
-		public var scr_w:int = 320;
-		public var scr_h:int = 200;
+		public static var SCR_W:int = 320;
+		public static var SCR_H:int = 200;
+		public var scr_w:int;
+		public var scr_h:int;
 		
 		public var mousex:int;
 		public var mousey:int;
@@ -22,6 +24,7 @@ package
 		public var paused:Array = [];
 		
 		public function Tracker(_host:GenWorld) {
+			scr_w = SCR_W; scr_h = SCR_H;
 			super(_host);
 		}
 		
@@ -74,7 +77,7 @@ package
 			anc.die);
 		}	
 		
-		public function pause():void {
+		override public function pause():void {
 			// if something is being added on the same frame, it avoids being paused
 			// depending on use, this can be a feature or a bug...
 			var all:Array = [];
@@ -86,7 +89,7 @@ package
 				paused.push(e); e.active = false;
 			}
 		}
-		public function unpause():void {
+		override public function unpause():void {
 			for each (var p:Entity in paused) {
 				p.active = true;
 			}
