@@ -1,6 +1,8 @@
 FlashFunk
 =======
 
+[![Join the chat at https://gitter.im/jigsaw121/FlashFunk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jigsaw121/FlashFunk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 FlashFunk is a third-party extension library to FlashPunk, offering things like scripting tools, state machines, and generally helper basecode that speeds up development. It's designed with game jams in mind, and has been tested out in a few projects. 
 
 FlashFunk shifts the focus towards working with ideas and behaviours. Passing around functions just like any other data is a staple of FlashFunk. Relax and write things the obvious way without the environment's control flow interrupting your train of thought. Minimize the use of copypasting, throwaway variables, and programming "sub-tasks" that force you to switch to another environment before you can achieve your current task.
